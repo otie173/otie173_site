@@ -1,142 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>weirdCSS Framework</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/otie173/weirdcss@1.1.27/src/weirdcss.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <style>
-      @keyframes blink {
-        0% {
-          opacity: 0;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>weirdCSS Framework</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/gh/otie173/weirdcss@latest/src/weirdcss.min.css"
+            rel="stylesheet"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+            defer
+        ></script>
+        <style>
+            @keyframes blink {
+                0% {
+                    opacity: 0;
+                }
 
-        50% {
-          opacity: 1;
-        }
+                50% {
+                    opacity: 1;
+                }
 
-        100% {
-          opacity: 0;
-        }
-      }
-
-      .cursor {
-        display: inline-block;
-        width: 2px;
-        height: 1.2em;
-        background-color: #a0a0a0;
-        margin-left: 2px;
-        animation: blink 0.7s infinite;
-        vertical-align: text-bottom;
-        position: relative;
-        top: -0.1em;
-      }
-
-      .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      }
-
-      .animate-on-scroll.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <header class="main-header">
-        <div class="logo">weirdCSS</div>
-        <nav>
-          <ul>
-            <li>
-              <a href="https://github.com/otie173/weirdcss/blob/main/docs/en/getting-start.md">Learn</a>
-            </li>
-            <li>
-              <a href="https://github.com/otie173/weirdcss">GitHub</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <header class="page-header">
-        <h1>A dead simple <span class="gradient-text">CSS Framework</span>
-        </h1>
-        <p class="subtitle" x-data="typewriter()" x-init="startTyping()">
-          <span x-text="displayText"></span>
-          <span class="cursor"></span>
-        </p>
-      </header>
-      <div class="buttons-container">
-        <a href="https://github.com/otie173/weirdcss/blob/main/docs/en/getting-start.md" class="btn btn-primary">Get Started</a>
-        <a href="https://github.com/otie173/weirdcss/blob/main/docs/en/how-to-install.md" class="btn btn-outline">Install</a>
-      </div>
-      <main>
-        <div class="feature-cards">
-          <div class="feature-card animate-on-scroll">
-            <div class="feature-icon">🎨</div>
-            <h3 class="feature-title">Simple Design</h3>
-            <p class="feature-description">A minimalist and modern design that's easy to customize to your needs.</p>
-          </div>
-          <div class="feature-card animate-on-scroll">
-            <div class="feature-icon">🚀</div>
-            <h3 class="feature-title">Quick Start</h3>
-            <p class="feature-description">Launch your project with weirdCSS in minutes, without complex setups. Thanks to its minimalist set of styles, your site will load lightning-fast.</p>
-          </div>
-          <div class="feature-card animate-on-scroll">
-            <div class="feature-icon">📱</div>
-            <h3 class="feature-title">Responsive</h3>
-            <p class="feature-description">Your website will look great on any device, from smartphones to desktops.</p>
-          </div>
-        </div>
-        <div class="card animate-on-scroll">
-          <h2>Why was this created?</h2>
-          <p>I wanted to create a simple landing page for myself without diving into complex CSS frameworks, so I present to you my own. By applying some basic styles to headings and other elements, you can instantly and effortlessly give your site an attractive look.</p>
-          <p>The main idea behind this project is to make life easier for people who want to create something simple and appealing but don't have enough time or desire to delve into the intricacies of web development.</p>
-          <p>
-            <b>Please note that this project is still in development. I'll be adding new features and refining existing ones to make it production-ready in the near future. Stay tuned!</b>
-          </p>
-        </div>
-      </main>
-    </div>
-    <footer>
-      <p class="footer-text">
-          Made with love by <a href="https://github.com/otie173" target="_blank" rel="noopener noreferrer">otie173</a>
-      </p>
-  </footer>
-    <script>
-      function typewriter() {
-        return {
-          fullText: 'Created by a lazy developer who doesn\'t want to learn complex frameworks',
-          displayText: '',
-          startTyping() {
-            this.typeText();
-          },
-          typeText() {
-            if (this.displayText.length < this.fullText.length) {
-              this.displayText += this.fullText.charAt(this.displayText.length);
-              setTimeout(() => this.typeText(), 50);
+                100% {
+                    opacity: 0;
+                }
             }
-          }
-        }
-      }
-      document.addEventListener('DOMContentLoaded', (event) => {
-        const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => {
-                entry.target.classList.add('show');
-              }, index * 100);
+
+            .cursor {
+                display: inline-block;
+                width: 2px;
+                height: 1.2em;
+                background-color: #a0a0a0;
+                margin-left: 2px;
+                animation: blink 0.7s infinite;
+                vertical-align: text-bottom;
+                position: relative;
+                top: -0.1em;
             }
-          });
-        }, {
-          threshold: 0.1
-        });
-        animateOnScrollElements.forEach(element => {
-          observer.observe(element);
-        });
-      });
-    </script>
+
+            .animate-on-scroll {
+                opacity: 0;
+                transform: translateY(30px);
+                transition:
+                    opacity 0.8s ease-out,
+                    transform 0.8s ease-out;
+            }
+
+            .animate-on-scroll.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header class="main-header">
+                <div class="logo">weirdCSS</div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a
+                                href="https://github.com/otie173/weirdcss/blob/main/docs/en/getting-start.md"
+                                >Learn</a
+                            >
+                        </li>
+                        <li>
+                            <a href="https://github.com/otie173/weirdcss"
+                                >GitHub</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <header class="page-header">
+                <h1>
+                    A dead simple
+                    <span class="gradient-text">CSS Framework</span>
+                </h1>
+                <p
+                    class="subtitle"
+                    x-data="typewriter()"
+                    x-init="startTyping()"
+                >
+                    <span x-text="displayText"></span>
+                    <span class="cursor"></span>
+                </p>
+            </header>
+            <div class="buttons-container">
+                <a
+                    href="https://github.com/otie173/weirdcss/blob/main/docs/en/getting-start.md"
+                    class="btn btn-primary"
+                    >Get Started</a
+                >
+                <a
+                    href="https://github.com/otie173/weirdcss/blob/main/docs/en/how-to-install.md"
+                    class="btn btn-outline"
+                    >Install</a
+                >
+            </div>
+            <main>
+                <div class="feature-cards">
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">🎨</div>
+                        <h3 class="feature-title">Simple Design</h3>
+                        <p class="feature-description">
+                            A minimalist and modern design that's easy to
+                            customize to your needs.
+                        </p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">🚀</div>
+                        <h3 class="feature-title">Quick Start</h3>
+                        <p class="feature-description">
+                            Launch your project with weirdCSS in minutes,
+                            without complex setups. Thanks to its minimalist set
+                            of styles, your site will load lightning-fast.
+                        </p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">📱</div>
+                        <h3 class="feature-title">Responsive</h3>
+                        <p class="feature-description">
+                            Your website will look great on any device, from
+                            smartphones to desktops.
+                        </p>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll">
+                    <h2>Why was this created?</h2>
+                    <p>
+                        I wanted to create a simple landing page for myself
+                        without diving into complex CSS frameworks, so I present
+                        to you my own. By applying some basic styles to headings
+                        and other elements, you can instantly and effortlessly
+                        give your site an attractive look.
+                    </p>
+                    <p>
+                        The main idea behind this project is to make life easier
+                        for people who want to create something simple and
+                        appealing but don't have enough time or desire to delve
+                        into the intricacies of web development.
+                    </p>
+                    <p>
+                        <b
+                            >Please note that this project is still in
+                            development. I'll be adding new features and
+                            refining existing ones to make it production-ready
+                            in the near future. Stay tuned!</b
+                        >
+                    </p>
+                </div>
+            </main>
+        </div>
+        <footer>
+            <p class="footer-text">
+                Made with love by
+                <a
+                    href="https://github.com/otie173"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >otie173</a
+                >
+            </p>
+        </footer>
+        <script>
+            function typewriter() {
+                return {
+                    fullText:
+                        "Created by a lazy developer who doesn't want to learn complex frameworks",
+                    displayText: "",
+                    startTyping() {
+                        this.typeText();
+                    },
+                    typeText() {
+                        if (this.displayText.length < this.fullText.length) {
+                            this.displayText += this.fullText.charAt(
+                                this.displayText.length,
+                            );
+                            setTimeout(() => this.typeText(), 50);
+                        }
+                    },
+                };
+            }
+            document.addEventListener("DOMContentLoaded", (event) => {
+                const animateOnScrollElements =
+                    document.querySelectorAll(".animate-on-scroll");
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry, index) => {
+                            if (entry.isIntersecting) {
+                                setTimeout(() => {
+                                    entry.target.classList.add("show");
+                                }, index * 100);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.1,
+                    },
+                );
+                animateOnScrollElements.forEach((element) => {
+                    observer.observe(element);
+                });
+            });
+        </script>
+    </body>
+</html>
